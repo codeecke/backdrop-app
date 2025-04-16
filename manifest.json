@@ -3,12 +3,12 @@
   "name": "Backdrop RC",
   "icons": [
     {
-      "src": "/backdrop-app/icon.png",
+      "src": "/icon.png",
       "type": "image/png",
       "sizes": "32x32"
     }
   ],
-  "start_url": "/backdrop-app/",
+  "start_url": "/index.html",
   "background_color": "#333",
   "theme_color": "#ffC000",
   "display": "standalone"
