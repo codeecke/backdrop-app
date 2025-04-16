@@ -1,1 +1,1 @@
-{"name":"Backdrop RC","short_name":"Backdrop RC","start_url":"/","display":"standalone","background_color":"#333","theme_color":"#ffC000","lang":"en","scope":"/backdrop-app/","icons":[{"src":"/icon.png","type":"image/png","sizes":"32x32"}]}
+{"name":"Backdrop RC","short_name":"Backdrop RC","start_url":"/backdrop-app/","display":"standalone","background_color":"#333","theme_color":"#ffC000","lang":"en","scope":"/backdrop-app/","icons":[{"src":"/icon.png","type":"image/png","sizes":"32x32"}]}
