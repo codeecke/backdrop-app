@@ -23,9 +23,13 @@ export class MQTTCommunicationService extends AbstractCommunicationService {
   }
 
   send(command: TDeviceCommand): void {
+    if (!this.client?.connected) {
+      console.warn("MQTT client not connected. Cannot send command.");
+      return;
+    }
     const topic = "STUDIO/BACKDROP/" + command.command;
     const payload = command.payload;
-    this.client?.publish(topic, JSON.stringify(payload));
+    this.client.publish(topic, JSON.stringify(payload));
   }
 
   private isValidCommandKey(commandKey: string): commandKey is TCommandKey {

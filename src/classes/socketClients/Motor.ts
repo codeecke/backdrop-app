@@ -38,8 +38,11 @@ export class Motor extends AbstractClient {
   }
 
   send(command: TDeviceCommand) {
-    console.log(command.toString());
-    this.comService.send(command);
+    try {
+      this.comService.send(command);
+    } catch (error) {
+      // Fehler wird in der Kommunikationsklasse bereits behandelt
+    }
   }
 
   getPosition() {
@@ -54,12 +57,12 @@ export class Motor extends AbstractClient {
     return this.direction;
   }
 
-  private createWebsocketCommand() {
+  private createDeviceCommand() {
     return createDeviceCommand(this.motorId);
   }
 
   move(direction: TDirection) {
-    const command = this.createWebsocketCommand().move(direction);
+    const command = this.createDeviceCommand().move(direction);
     this.send(command);
   }
 
@@ -72,22 +75,22 @@ export class Motor extends AbstractClient {
   }
 
   stop() {
-    const command = this.createWebsocketCommand().stop();
+    const command = this.createDeviceCommand().stop();
     this.send(command);
   }
 
   moveTo(position: number) {
-    const command = this.createWebsocketCommand().moveTo(position);
+    const command = this.createDeviceCommand().moveTo(position);
     this.send(command);
   }
 
   calibrate() {
-    const command = this.createWebsocketCommand().calibrate();
+    const command = this.createDeviceCommand().calibrate();
     this.send(command);
   }
 
   savePosition(name: string) {
-    const command = this.createWebsocketCommand().savePosition(name);
+    const command = this.createDeviceCommand().savePosition(name);
     this.send(command);
   }
 

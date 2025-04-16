@@ -6,7 +6,7 @@ import { RootState } from "./store";
 import { setSelectedColor } from "./store/colorSlice";
 
 import { useDispatch, useSelector } from "react-redux";
-import { useActiveMotor } from "./store/motorSlice";
+import { useActiveMotor, setActiveMotorId } from "./store/motorSlice";
 import { PositionList } from "./components/PositionList";
 import { TMotorConfigurationItem } from "./classes/ClientCommands/MotorConfigurationCommand";
 
@@ -24,7 +24,10 @@ function App() {
         <ColorSelector
           colors={availableColors}
           onChange={(selected: TMotorConfigurationItem) => {
+            // Globale Variable aktualisieren (von außen zugänglich machen)
+            (window as any).lastSelectedMotorId = selected.motorId;
             dispatch(setSelectedColor(selected));
+            dispatch(setActiveMotorId(selected.motorId));
           }}
         />
       )}

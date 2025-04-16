@@ -10,17 +10,22 @@ interface PositionListParams {
 }
 
 export const PositionList: FC<PositionListParams> = ({ motor }) => {
-  const positionList: TPosition[] =
+  const allPositions: TPosition[] =
     useSelector((state: RootState) => state.positionListReducer.positions) ||
     [];
+    
+  // Filtere nur die Positionen, die zum aktuellen Motor gehören
+  const positionList = allPositions.filter(
+    (position) => position.motorId === motor.motorId
+  );
 
   const edit = (position: TPosition) => {
-    const newName = prompt("Name", position.name) || position.name;
-    console.log("Neuer Name:", newName);
+    // TODO: Implementieren der Edit-Funktionalität
+    prompt("Name", position.name);
   };
 
-  const remove = (position: TPosition) => {
-    console.log("zu löschende Position:", position);
+  const remove = (_position: TPosition) => {
+    // TODO: Implementieren der Lösch-Funktionalität
   };
   return (
     <ul>
